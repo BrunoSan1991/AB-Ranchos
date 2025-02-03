@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>AB Ranchos</title>
+    <meta charset="UTF-8" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="cleartype" content="on" />
+
+    <!-- Fonte -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+
+    <!-- Bootstrap Select CSS -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css" />
+
+    <!--Bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script type="module"
+        src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+
+    <!-- Estilos da folha de estilo   -->
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="globla_container">
+        <header class="header-airbnb d-flex justify-content-between align-items-center">
+            <img class="logo" src="./img/AB_ranchos.svg">
+            <div class="user-menu">
+                <a href="#">Torne-se um anfitrião</a>
+                <div class="dropdown">
+                    <button class="btn menu-icon dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end mt-2" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                data-bs-target="#cadastreModal">Cadastre</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                data-bs-target="#cadastreModal">Entrar</a>
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="search-bar d-flex justify-content-center mx-auto mt-5">
+            <input type="text" placeholder="Para onde?" />
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <main class="container my-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card card-airbnb">
+                        <!-- Container com position-relative para a imagem -->
+                        <div class="position-relative">
+                            <img src="/img/image.png" class="card-img-top" alt="Imagem do imóvel">
+
+                            <!-- Botão "Voltar" posicionado à esquerda -->
+                            <a href="#" class="btn prev btn-light position-absolute top-50 start-0 translate-middle-y"
+                                style="opacity: 0.8; margin: 5px;">
+                                &#10094;
+                            </a>
+
+                            <!-- Botão "Seguir" posicionado à direita -->
+                            <a href="#" class="btn next btn-light position-absolute top-50 end-0 translate-middle-y"
+                                style="opacity: 0.8; margin: 5px;">
+                                &#10095;
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Apartamento Moderno</h5>
+                            <p class="card-text">
+                                Localizado no coração da cidade, este apartamento oferece conforto e praticidade.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-muted">R$ 250/noite</span>
+                                <a href="#" class="btn btn-outline-primary btn-sm">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card card-airbnb">
+                        <!-- Container com position-relative para a imagem -->
+                        <div class="position-relative">
+                            <img src="/img/image.png" class="card-img-top" alt="Imagem do imóvel">
+
+                            <!-- Botão "Voltar" posicionado à esquerda -->
+                            <a href="#" class="btn prev btn-light position-absolute top-50 start-0 translate-middle-y"
+                                style="opacity: 0.8; margin: 5px;">
+                                &#10094;
+                            </a>
+
+                            <!-- Botão "Seguir" posicionado à direita -->
+                            <a href="#" class="btn next btn-light position-absolute top-50 end-0 translate-middle-y"
+                                style="opacity: 0.8; margin: 5px;">
+                                &#10095;
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Apartamento Moderno</h5>
+                            <p class="card-text">
+                                Localizado no coração da cidade, este apartamento oferece conforto e praticidade.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-muted">R$ 250/noite</span>
+                                <a href="#" class="btn btn-outline-primary btn-sm">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card card-airbnb">
+                        <!-- Container com position-relative para a imagem -->
+                        <div class="position-relative">
+                            <img src="/img/image.png" class="card-img-top" alt="Imagem do imóvel">
+
+                            <!-- Botão "Voltar" posicionado à esquerda -->
+                            <a href="#" class="btn prev btn-light position-absolute top-50 start-0 translate-middle-y"
+                                style="opacity: 0.8; margin: 5px;">
+                                &#10094;
+                            </a>
+
+                            <!-- Botão "Seguir" posicionado à direita -->
+                            <a href="#" class="btn next btn-light position-absolute top-50 end-0 translate-middle-y"
+                                style="opacity: 0.8; margin: 5px;">
+                                &#10095;
+                            </a>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Apartamento Moderno</h5>
+                            <p class="card-text">
+                                Localizado no coração da cidade, este apartamento oferece conforto e praticidade.
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-muted">R$ 250/noite</span>
+                                <a href="#" class="btn btn-outline-primary btn-sm">Ver detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Você pode duplicar o bloco acima para criar mais cards -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer inspirado no Airbnb -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Sobre</h4>
+                <ul>
+                    <li><a href="#">Como funciona</a></li>
+                    <li><a href="#">Notícias</a></li>
+                    <li><a href="#">Investidores</a></li>
+                    <li><a href="#">Carreiras</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Comunidade</h4>
+                <ul>
+                    <li><a href="#">Diversidade & Inclusão</a></li>
+                    <li><a href="#">Acessibilidade</a></li>
+                    <li><a href="#">Relações com a comunidade</a></li>
+                    <li><a href="#">Convidados especiais</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Hospedagem</h4>
+                <ul>
+                    <li><a href="#">Hospede sua casa</a></li>
+                    <li><a href="#">Hospedagem Online</a></li>
+                    <li><a href="#">Experiências</a></li>
+                    <li><a href="#">Recomendações</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="#">Central de ajuda</a></li>
+                    <li><a href="#">Segurança</a></li>
+                    <li><a href="#">Termos & Condições</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Cadastro -->
+    <div class="modal fade" id="cadastreModal" tabindex="-1" aria-labelledby="cadastreModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center w-100" id="cadastreModalLabel">
+                        <b>Entrar ou Cadastrar</b>
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <!-- Conteúdo inicial do modal -->
+                    <h4 class="mb-4">Bem-vindo ao AB Ranchos</h4>
+                    <div class="row">
+                        <!-- Campo de Número de Telefone -->
+                        <div class="col-md-12 col-sm-12 col-xl-12 mb-3">
+                            <label for="phoneInput" class="form-label">Número de Telefone</label>
+                            <div class="input-group">
+                                <span class="input-group-text" id="countryCode">+55</span>
+                                <input type="text" class="form-control" id="phoneInput"
+                                    placeholder="(DDD) Número do telefone" maxlength="15" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-muted">
+                        Ligaremos ou enviaremos uma mensagem para confirmar seu número.
+                        Podem ser aplicadas tarifas padrão de dados e mensagens.
+                        <a href="#">Política de Privacidade</a>
+                    </p>
+
+                    <!-- Botão Continuar -->
+                    <button class="btn btn-custom">Continuar</button>
+
+                    <!-- Divider -->
+                    <div class="divider">ou</div>
+
+                    <!-- Botões Alternativos -->
+                    <div class="button-container">
+                        <a class="btn btn-google over mb-2" id="enterEmailButton">Entrar com E-mail</a>
+                        <a href="http://localhost:3000/auth/google" class="btn btn-google" id="google-login">
+                            <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+                            Continuar com Google
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="cadastro_google.js"></script>
+    <script src="cadastro_modal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.globla_container {
+ 
+
+}
+
+.header-airbnb {
+    background: white;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+   
+}
+
+.search-bar {
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    padding: 8px 20px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-menu .menu-icon {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.search-icon {
+    color: #FF385C;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+/* .modal-body {
+    padding: 2rem;
+    text-align: center;
+} */
+
+.btn-custom {
+    background-color: #FF385C;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    width: 100%;
+    margin: 1rem 0;
+    border-radius: 8px;
+}
+
+.btn-custom:hover {
+    background-color: #e0324f;
+}
+
+.btn-outline-custom {
+    border: 1px solid #ddd;
+    color: black;
+    width: 100%;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+}
+
+.btn-outline-custom i {
+    margin-right: 10px;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider:not(:empty)::before {
+    margin-right: .5em;
+}
+
+.divider:not(:empty)::after {
+    margin-left: .5em;
+}
+
+.form-control {
+    text-align: left;
+}
+
+/* ************Botões google*************** */
+.button-container{
+    padding: 20px;
+}
+
+.btn-google {
+    background: white;
+    color: #757575;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .btn-google img {
+    width: 20px;
+  }
+
+
+.botaoCadastro .btn-primary {
+    background-color:#286291 !important;
+    color:#38b6ff !important;
+    border: 0;
+}
+
+.botaoCadastro .btn-primary:hover {
+    background-color:#38b6ff !important;
+    color:#286291 !important;
+    border:0;
+}
+
+
+/* Foooter */
+
+/* Estilos do footer */
+.footer {
+    background-color: #f7f7f7; /* Cor de fundo parecida com a do Airbnb */
+    padding: 40px 20px;
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px 0;
+  }
+
+  .footer-section h4 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  .footer-section ul {
+    list-style: none;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #484848;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section ul li a:hover {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  /* Responsividade: para telas menores, os itens empilham */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer-section {
+      text-align: center;
+    }
+  }
+
+
+   /* Exemplo de customização para deixar o card mais parecido com o Airbnb */
+   .card-airbnb {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+  }
+  .card-airbnb:hover {
+    transform: scale(1.02);
+  }
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+
+
+ 
