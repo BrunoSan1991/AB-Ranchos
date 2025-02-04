@@ -15,6 +15,13 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta http-equiv="cleartype" content="on" />
 
+    <!-- Icone do rancho -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/AB_Ranchos_fundo_TRANSP.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/AB_Ranchos_fundo_TRANSP.png">
+    <link rel="shortcut icon" type="image/png" sizes="48x48" href="img/AB_Ranchos_fundo_TRANSP.png">
+    <link rel="mask-icon" color="#00a300" href="img/AB_Ranchos_fundo_TRANSP.png">
+
+
     <!-- Fonte -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet" />
 
@@ -72,9 +79,13 @@
                 </div>
             </div>
         </header>
-        <div class="search-bar d-flex justify-content-center mx-auto mt-5">
-            <input type="text" placeholder="Para onde?" />
-            <i class="fas fa-search search-icon"></i>
+
+        <div class="search-container">
+            <div class="search-bar">
+                <input id="search-input" type="text" placeholder="Para onde?" />
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <ul class="suggestions" id="suggestions"></ul>
         </div>
 
         <main class="container my-4">
@@ -109,8 +120,8 @@
                             </div>
                         </div>
                     </div>
-                </div>   
-                
+                </div>
+
                 <div class="col-sm-12 col-md-6 col-xl-4">
                     <div class="card card-airbnb">
                         <!-- Container com position-relative para a imagem -->
