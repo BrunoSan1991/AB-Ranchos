@@ -8,3 +8,6 @@ logs/
 # Ignorar arquivos de ambiente
 .env
 
+# Ignorar o bower_components
+
+bower_components/

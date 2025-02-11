@@ -1,3 +1,4 @@
+
 const phoneInput = document.getElementById("phoneInput");
 
 // Função para formatar o telefone no padrão brasileiro
@@ -44,7 +45,6 @@ phoneInput.addEventListener("input", function (e) {
 
 
 
-
   document.addEventListener('DOMContentLoaded', function() {
     // Seleciona todos os cards com a classe "card-airbnb"
     const cards = document.querySelectorAll('.card-airbnb');
@@ -80,4 +80,74 @@ phoneInput.addEventListener("input", function (e) {
   });
 
 
-  
+
+// Sua configuração do Firebase (substitua pelos dados do seu projeto)
+var firebaseConfig = {
+  apiKey: "SUA_API_KEY",
+  authDomain: "SEU_AUTH_DOMAIN",
+  projectId: "SEU_PROJECT_ID",
+  storageBucket: "SEU_STORAGE_BUCKET",
+  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
+  appId: "SEU_APP_ID"
+};
+
+// Inicialize o Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// Inicialize o reCAPTCHA
+const recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+  size: 'invisible', // ou 'normal' se preferir mostrar o widget
+  callback: (response) => {
+    // reCAPTCHA resolvido, podemos enviar o SMS
+    console.log("reCAPTCHA resolvido");
+  },
+  'expired-callback': () => {
+    // Resposta expirada, reconfigure se necessário
+    console.log("reCAPTCHA expirou");
+  }
+});
+
+// Renderize o widget se estiver em modo 'normal'
+recaptchaVerifier.render().then(widgetId => {
+  window.recaptchaWidgetId = widgetId;
+});
+
+// Função para enviar o SMS
+document.getElementById('sendCodeBtn').addEventListener('click', function() {
+  // Obtenha o número de telefone do input e concatene com o código do país
+  let phoneNumber = document.getElementById('countryCode').innerText + document.getElementById('phoneInput').value;
+  // Opcional: formate o número removendo caracteres indesejados
+  phoneNumber = phoneNumber.replace(/\D/g, ''); // Remove tudo que não é dígito
+  phoneNumber = '+' + phoneNumber; // Garante o sinal de +
+
+  // Use a função signInWithPhoneNumber
+  firebase.auth().signInWithPhoneNumber(phoneNumber, recaptchaVerifier)
+    .then((confirmationResult) => {
+      // SMS enviado. Guarde o objeto confirmationResult para verificar o código posteriormente.
+      window.confirmationResult = confirmationResult;
+      alert("Código enviado! Verifique seu telefone.");
+    })
+    .catch((error) => {
+      // Ocorreu algum erro
+      console.error("Erro ao enviar SMS: ", error);
+      alert("Erro ao enviar SMS. Tente novamente.");
+    });
+});
+
+
+document.getElementById('verifyCodeBtn').addEventListener('click', function() {
+  const code = document.getElementById('codeInput').value;
+  window.confirmationResult.confirm(code)
+    .then((result) => {
+      // Usuário autenticado com sucesso.
+      const user = result.user;
+      alert("Telefone autenticado com sucesso!");
+      console.log("Usuário autenticado: ", user);
+    })
+    .catch((error) => {
+      // Código inválido ou expirado.
+      console.error("Erro ao verificar o código: ", error);
+      alert("Código inválido. Tente novamente.");
+    });
+});

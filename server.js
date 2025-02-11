@@ -1,8 +1,14 @@
-require("dotenv").config();
-const express = require("express");
-const passport = require("passport");
-const session = require("express-session");
-const { Strategy: GoogleStrategy } = require("passport-google-oauth20");
+import "dotenv/config";
+import express from "express";
+import passport from "passport";
+import session from "express-session";
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+// Definindo __filename e __dirname para módulos ES
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -45,7 +51,7 @@ app.use(express.static(__dirname)); // Usa a pasta atual como raiz para os arqui
 
 // Rotas
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html"); // Serve o index.html como página inicial
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // Login com Google
