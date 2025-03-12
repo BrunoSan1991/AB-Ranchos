@@ -11,3 +11,5 @@ logs/
 # Ignorar o bower_components
 
 bower_components/
+
+firebase-service-account.json

@@ -5,12 +5,17 @@ import session from "express-session";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import { fileURLToPath } from 'url';
 import path from 'path';
+import admin from "./firebaseAdmin.js";
 
 // Definindo __filename e __dirname para módulos ES
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Inicializa o app Express
 const app = express();
+
+// Middleware para ler JSON no corpo da requisição
+app.use(express.json());
 
 // Configurar sessão
 app.use(
@@ -21,10 +26,11 @@ app.use(
   })
 );
 
+// Inicializa o Passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Configurar Passport com Google
+// Configurar estratégia do Google
 passport.use(
   new GoogleStrategy(
     {
@@ -46,18 +52,16 @@ passport.deserializeUser((user, done) => {
   done(null, user);
 });
 
-// Serve os arquivos estáticos da pasta do frontend
-app.use(express.static(__dirname)); // Usa a pasta atual como raiz para os arquivos estáticos
+// Serve os arquivos estáticos (como index.html, CSS, etc)
+app.use(express.static(__dirname));
 
-// Rotas
+// Rotas públicas
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Login com Google
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile", "email"] }));
 
-// Callback do Google
 app.get(
   "/auth/google/callback",
   passport.authenticate("google", { failureRedirect: "/" }),
@@ -66,11 +70,11 @@ app.get(
   }
 );
 
-// Perfil do usuário
 app.get("/profile", (req, res) => {
   if (!req.isAuthenticated()) {
     return res.redirect("/");
   }
+
   res.send(`
     <h1>Bem-vindo, ${req.user.displayName}!</h1>
     <img src="${req.user.photos[0].value}" alt="Foto do perfil" style="border-radius: 50%; width: 150px;">
@@ -79,14 +83,27 @@ app.get("/profile", (req, res) => {
   `);
 });
 
-// Logout
 app.get("/logout", (req, res) => {
   req.logout(() => {
     res.redirect("/");
   });
 });
 
-// Iniciar servidor
+// ✅ Rota protegida com verificação de token JWT do Firebase
+app.post("/verifica-token", async (req, res) => {
+  const idToken = req.body.token;
+
+  try {
+    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    console.log("Usuário autenticado:", decodedToken);
+    res.status(200).json({ success: true, uid: decodedToken.uid });
+  } catch (error) {
+    console.error("Token inválido", error);
+    res.status(401).json({ success: false, message: "Token inválido" });
+  }
+});
+
+// Inicia o servidor
 app.listen(3000, () => {
   console.log("Servidor rodando em http://localhost:3000");
 });
